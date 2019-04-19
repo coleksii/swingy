@@ -1,0 +1,5 @@
+com\coleksii\swingy\Main.class
+com\coleksii\swingy\enums\Property.class
+com\coleksii\swingy\listeners\StartGameListener.class
+com\coleksii\swingy\Game.class
+com\coleksii\swingy\enums\Component.class
