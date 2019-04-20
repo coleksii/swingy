@@ -13,8 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
-@Getter
-@Setter
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class StartGameListener implements ActionListener {
@@ -130,8 +128,24 @@ public class StartGameListener implements ActionListener {
         Hero hero = user.getHero();
         JLabel jLabel = (JLabel) map.get(Component.HERO_STAT);
         jLabel.setText(RedactorForHtml.redact(hero.getStats()));
-        jLabel.setLocation(10, 300);
+        jLabel.setLocation(10, 250);
         jLabel.setVisible(true);
+
+
+        JLabel textlabel = (JLabel) map.get(Component.TEXT_LABEL);
+        textlabel.setText(RedactorForHtml.redact(message));
+        textlabel.setVisible(true);
+
+        JButton north = (JButton) map.get(Component.NORTH);
+        north.setVisible(true);
+        JButton west = (JButton) map.get(Component.WEST);
+        west.setVisible(true);
+        JButton east = (JButton) map.get(Component.EAST);
+        east.setVisible(true);
+        JButton south = (JButton) map.get(Component.SOUTH);
+        south.setVisible(true);
+
+
     }
 
     private void erase(){

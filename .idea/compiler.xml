@@ -9,5 +9,8 @@
         <module name="swingy" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="swingy" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

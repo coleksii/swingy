@@ -9,4 +9,5 @@ import lombok.Setter;
 public class User {
     private State state;
     private Hero hero;
+    private MapCell [][] map;
 }

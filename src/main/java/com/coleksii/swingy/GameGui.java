@@ -2,6 +2,7 @@ package com.coleksii.swingy;
 
 import com.coleksii.swingy.enums.Component;
 import com.coleksii.swingy.enums.Property;
+import com.coleksii.swingy.listeners.ProccesGameListener;
 import com.coleksii.swingy.listeners.StartGameListener;
 import com.coleksii.swingy.model.User;
 import com.coleksii.swingy.services.GameEngineService;
@@ -95,8 +96,40 @@ public class GameGui {
         addComponent(Component.HERO_STAT, heroStat);
 
         createHeroScreen(listener);
-
+        createDirectionButton();
         gameFrame.setVisible(true);
+    }
+
+    private void createDirectionButton() {
+        ProccesGameListener listener = new ProccesGameListener(componentMap, user, engine);
+        JButton north = new JButton(Component.NORTH.getValue());
+        north.setVisible(false);
+        north.setLocation(350, 350);
+        north.setSize(100, 20);
+        north.addActionListener(listener);
+        north.setVisible(false);
+        addComponent(Component.NORTH, north);
+
+        JButton west = new JButton(Component.WEST.getValue());
+        west.setVisible(false);
+        west.addActionListener(listener);
+        addComponent(Component.WEST, west);
+        west.setLocation(420, 400);
+        west.setSize(100, 20);
+
+        JButton east = new JButton(Component.EAST.getValue());
+        east.setVisible(false);
+        east.addActionListener(listener);
+        east.setLocation(280, 400);
+        east.setSize(100, 20);
+        addComponent(Component.EAST, east);
+
+        JButton south = new JButton(Component.SOUTH.getValue());
+        south.setVisible(false);
+        south.addActionListener(listener);
+        south.setLocation(350, 450);
+        south.setSize(100, 20);
+        addComponent(Component.SOUTH, south);
     }
 
     private void createHeroScreen(ActionListener listener) {
@@ -149,6 +182,8 @@ public class GameGui {
         addComponent(Component.THIRD_HERO_BUTTON, buttonThirdHero);
 
     }
+
+
 
     private void addComponent(Component componentEnum, JComponent component){
         componentMap.put(componentEnum, component);

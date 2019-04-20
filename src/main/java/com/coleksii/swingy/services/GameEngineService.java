@@ -2,13 +2,20 @@ package com.coleksii.swingy.services;
 
 import com.coleksii.swingy.enums.Component;
 import com.coleksii.swingy.enums.State;
+import com.coleksii.swingy.model.Enemy;
 import com.coleksii.swingy.model.Hero;
+import com.coleksii.swingy.model.MapCell;
 import com.coleksii.swingy.model.User;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Random;
+
 @RequiredArgsConstructor
 public class GameEngineService {
+
+    MapCell[][]map;
+
     @NonNull
     private User user;
 
@@ -19,13 +26,16 @@ public class GameEngineService {
         } else if (user.getState() == State.CHOICE && command.equals(Component.CHOOSE_HERO_BUTTON.getValue())) {
             user.setState(State.CHOOSE_HERO);
             return "Choose your hero!";
-        } else if (command.equals(Component.CREATE_HERO_BUTTON.getValue())){
+        } else if (user.getState() == State.CHOICE &&  command.equals(Component.CREATE_HERO_BUTTON.getValue())){
             user.setState(State.CREATE_HERO_NAME);
             return "Please input name";
         } else if (user.getState() == State.CREATE_HERO_NAME || user.getState() == State.CHOOSE_HERO) {
-            user.setState(State.START_GAME);
+            user.setState(State.GAME_PROCCESS);
             createHero(command);
-            return "So you are in the center of map choose your direction";
+            createMap();
+            return "So you are in the center of map\nchoose your direction";
+        } else if (user.getState() == State.GAME_PROCCESS){
+            return "GAME";
         }
         return "Please try another command";
     }
@@ -42,5 +52,32 @@ public class GameEngineService {
             hero = HeroFactory.createHero(Component.FIRST_HERO, name);
         }
         user.setHero(hero);
+    }
+
+    private void createMap(){
+        int size =  (user.getHero().getLevel()-1)*5+10-(user.getHero().getLevel()%2);
+        map = new MapCell[size][size];
+        user.setMap(map);
+        generateEnemy(size);
+
+        System.out.println("createMap with size " + size);
+    }
+
+    private void generateEnemy(int size) {
+        int x = 0;
+        int y;
+        while (x > size){
+            y = getRandom(size);
+             if (y != size / 2 + 1) {
+                 Enemy enemy = EnemyFactory.createEnemy(x);
+                 map[x][y].setEnemy(enemy);
+             }
+            x++;
+        }
+    }
+
+    private int getRandom(int max){
+        Random random = new Random();
+        return random.nextInt(max);
     }
 }

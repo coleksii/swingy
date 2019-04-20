@@ -26,7 +26,8 @@ public enum Component {
     CREATE_HERO_BUTTON("create hero"),
     INPUT_TEXT("Enter Hero Name"),
     SUBMIT_BUTTON("submit"),
-    HERO_STAT("hero stat")
+    HERO_STAT("hero stat"),
+    NORTH("north"), WEST("west"), EAST("east"), SOUTH("south")
     ;
 
     private static Properties prop = new Properties();

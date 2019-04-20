@@ -28,6 +28,8 @@ public class Hero {
 
     public void setLevel(int level) {
         hitPoint = (int) (level / 2.0 * 100);
+        attack = (int) (level * 5);
+        defense = (int) (level * 5);
         this.level = level;
     }
 
@@ -71,6 +73,8 @@ public class Hero {
                 "level: " + level + "\n" +
                 "EXP: " + experience + "/" + expLine + "\n" +
                 "HP: " + hitPoint + "\n" +
+                "Attack: " + attack + "\n" +
+                "Defence "+ defense + "\n"+
                 "weapon: " + weapon + "\n" +
                 "armor: " + armor + "\n" +
                 "helm: " + helm + "\n";
