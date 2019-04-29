@@ -5,7 +5,7 @@ import com.coleksii.swingy.enums.Property;
 import com.coleksii.swingy.listeners.ProccesGameListener;
 import com.coleksii.swingy.listeners.StartGameListener;
 import com.coleksii.swingy.model.User;
-import com.coleksii.swingy.services.GameEngineService;
+import com.coleksii.swingy.services.GameEngineProcessor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +24,7 @@ public class GameGui {
     private JFrame gameFrame;
     private User user;
     @NonNull
-    private GameEngineService engine;
+    private GameEngineProcessor engine;
 
     public void start(User user){
         this.user = user;
@@ -97,7 +97,35 @@ public class GameGui {
 
         createHeroScreen(listener);
         createDirectionButton();
+        createenemyImages();
+
         gameFrame.setVisible(true);
+    }
+
+    private void createenemyImages() {
+        JLabel enemyFirst = new JLabel(new ImageIcon("./images/pixel/enemy/1.png"));
+        configEnemy(enemyFirst, Component.COLOR_SKELETON);
+        JLabel enemySecond = new JLabel(new ImageIcon("./images/pixel/enemy/2.png"));
+        configEnemy(enemySecond, Component.KENNY_SKELETON);
+        JLabel enemyThird = new JLabel(new ImageIcon("./images/pixel/enemy/3.png"));
+        configEnemy(enemyThird, Component.DRAGON);
+        JLabel enemyFourth = new JLabel(new ImageIcon("./images/pixel/enemy/4.png"));
+        configEnemy(enemyFourth, Component.FAT_SKELETON);
+        JLabel enemyFivth = new JLabel(new ImageIcon("./images/pixel/enemy/5.png"));
+        configEnemy(enemyFivth, Component.EXCETIPION_SKELETON);
+        JLabel enemySixth = new JLabel(new ImageIcon("./images/pixel/enemy/6.png"));
+        configEnemy(enemySixth, Component.ANGTY_SKELETON);
+        JLabel enemySevens = new JLabel(new ImageIcon("./images/pixel/enemy/7.png"));
+        configEnemy(enemySevens, Component.KNIGHT);
+        JLabel enemyEight = new JLabel(new ImageIcon("./images/pixel/enemy/8.png"));
+        configEnemy(enemyEight, Component.SKULL);
+    }
+
+    private void configEnemy(JLabel enemyFirst, Component component) {
+        enemyFirst.setSize(180, 200);
+        enemyFirst.setLocation(200, 120);
+        enemyFirst.setVisible(false);
+        addComponent(component, enemyFirst);
     }
 
     private void createDirectionButton() {
@@ -113,15 +141,17 @@ public class GameGui {
         JButton west = new JButton(Component.WEST.getValue());
         west.setVisible(false);
         west.addActionListener(listener);
-        addComponent(Component.WEST, west);
-        west.setLocation(420, 400);
+        west.setLocation(280, 400);
         west.setSize(100, 20);
+        addComponent(Component.WEST, west);
+
 
         JButton east = new JButton(Component.EAST.getValue());
         east.setVisible(false);
         east.addActionListener(listener);
-        east.setLocation(280, 400);
+        east.setLocation(420, 400);
         east.setSize(100, 20);
+
         addComponent(Component.EAST, east);
 
         JButton south = new JButton(Component.SOUTH.getValue());

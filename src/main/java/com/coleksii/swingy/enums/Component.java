@@ -27,8 +27,19 @@ public enum Component {
     INPUT_TEXT("Enter Hero Name"),
     SUBMIT_BUTTON("submit"),
     HERO_STAT("hero stat"),
-    NORTH("north"), WEST("west"), EAST("east"), SOUTH("south")
-    ;
+    NORTH("north"), WEST("west"), EAST("east"), SOUTH("south"),
+
+    COLOR_SKELETON("Color Skeleton!"),
+    KENNY_SKELETON("Kenny Skeleton"),
+    DRAGON("Dragon"),
+    FAT_SKELETON("Fat Skeleton"),
+    EXCETIPION_SKELETON("Exception Skeleton"),
+    ANGTY_SKELETON("Angry Skeleton"),
+    KNIGHT("Knight"),
+    SKULL("Skull"),
+    DARK("Dark Lord"),
+    FIGHT("fight"), RUN("run"),
+    KEEP("keep"), LEAVE("leave");
 
     private static Properties prop = new Properties();
 
@@ -48,10 +59,11 @@ public enum Component {
         value = s;
     }
 
-    public String getProp(){
+    public String getProp() {
         return prop.getProperty(value);
     }
-    public int getInteger(){
+
+    public int getInteger() {
         return Integer.parseInt(prop.getProperty(value));
     }
 }

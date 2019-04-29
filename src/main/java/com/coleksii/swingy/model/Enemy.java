@@ -1,5 +1,6 @@
 package com.coleksii.swingy.model;
 
+import com.coleksii.swingy.enums.Component;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,4 +14,6 @@ import javax.swing.*;
 public class Enemy {
     private int strength;
     private JLabel image;
+    private String name;
+    private Component component;
 }

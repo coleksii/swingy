@@ -1,12 +1,16 @@
 com/coleksii/swingy/services/GameEngineService.class
+com/coleksii/swingy/listeners/ProccesGameListener.class
 com/coleksii/swingy/listeners/StartGameListener.class
 com/coleksii/swingy/enums/Property.class
 com/coleksii/swingy/GameGui.class
 com/coleksii/swingy/RedactorForHtml.class
 com/coleksii/swingy/services/HeroFactory.class
 com/coleksii/swingy/Main.class
+com/coleksii/swingy/model/Enemy.class
 com/coleksii/swingy/model/User.class
+com/coleksii/swingy/services/EnemyFactory.class
 com/coleksii/swingy/model/Hero.class
 com/coleksii/swingy/model/Hero$HeroBuilder.class
 com/coleksii/swingy/enums/State.class
 com/coleksii/swingy/enums/Component.class
+com/coleksii/swingy/model/MapCell.class

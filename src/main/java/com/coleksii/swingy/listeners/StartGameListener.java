@@ -5,10 +5,11 @@ import com.coleksii.swingy.enums.Component;
 import com.coleksii.swingy.enums.State;
 import com.coleksii.swingy.model.Hero;
 import com.coleksii.swingy.model.User;
-import com.coleksii.swingy.services.GameEngineService;
+import com.coleksii.swingy.services.GameEngineProcessor;
 import lombok.*;
 
 import javax.swing.*;
+import javax.validation.constraints.NotNull;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
@@ -19,13 +20,17 @@ public class StartGameListener implements ActionListener {
 
     private boolean visible = true;
     @NonNull
+    @NotNull
     private JFrame gameFrame;
     @NonNull
+    @NotNull
     private Map<Component, JComponent> map;
     @NonNull
+    @NotNull
     private User user;
     @NonNull
-    private GameEngineService engine;
+    @NotNull
+    private GameEngineProcessor engine;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -113,6 +118,8 @@ public class StartGameListener implements ActionListener {
             jComponentHero.setVisible(true);
             String message = engine.proccess(e.getActionCommand());
             createHeroStatMessageButton(message);
+            Hero hero = user.getHero();
+            hero.setLabel((JLabel) jComponentHero);
         }
     }
 
